@@ -1,0 +1,18 @@
+[project]
+authors = ["Josse Van Delm <josse.vandelm@gmail.com>"]
+channels = ["conda-forge"]
+description = "ML frontends are a mess"
+name = "frontend-mess"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "==3.11.11"
+
+[pypi-dependencies]
+torch = {version = "==2.5.0", index = "https://download.pytorch.org/whl/cpu"}
+torchvision = {version = "==0.20.0", index = "https://download.pytorch.org/whl/cpu"}
+torch-mlir = {index = "https://github.com/llvm/torch-mlir-release/releases/expanded_assets/dev-wheels"}
+
