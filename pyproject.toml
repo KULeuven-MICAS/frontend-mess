@@ -1,18 +1,27 @@
 [project]
-authors = ["Josse Van Delm <josse.vandelm@gmail.com>"]
-channels = ["conda-forge", "kuleuven-micas"]
-description = "ML frontends are a mess"
 name = "frontend-mess"
-platforms = ["linux-64"]
+description = "ML frontends are a mess"
+authors = [
+    {name = "Josse Van Delm", email = "josse.vandelm@kuleuven.be"},
+]
 version = "0.1.0"
 
-[tasks]
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
 
-[dependencies]
+[tool.pixi.project]
+channels = ["conda-forge", "kuleuven-micas"]
+platforms = ["linux-64"]
+
+[tool.pixi.tasks]
+
+[tool.pixi.dependencies]
 python = "==3.11.11"
 mlir = { version = "==19.1.1.c.d401987fe349a87c53fe25829215b80b70c0c1a", channel = "kuleuven-micas" }
 
-[pypi-dependencies]
+[tool.pixi.pypi-dependencies]
 torch = {version = "==2.5.0", index = "https://download.pytorch.org/whl/cpu"}
 torchvision = {version = "==0.20.0", index = "https://download.pytorch.org/whl/cpu"}
 torch-mlir = {index = "https://github.com/llvm/torch-mlir-release/releases/expanded_assets/dev-wheels"}
+frontend-mess = { path = ".", editable = true}

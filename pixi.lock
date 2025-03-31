@@ -45,6 +45,7 @@ environments:
       - pypi: https://github.com/llvm/torch-mlir-release/releases/download/dev-wheels/torch_mlir-20250127.357-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://download.pytorch.org/whl/cpu/torchvision-0.20.0%2Bcpu-cp311-cp311-linux_x86_64.whl#sha256=3023b88f27f2e80fefa2ff54d9cdb968479a2903c3bc5d0d872e7092d3f8f555
       - pypi: https://files.pythonhosted.org/packages/e0/86/39b65d676ec5732de17b7e3c476e45bb80ec64eb50737a8dce1a4178aba1/typing_extensions-4.13.0-py3-none-any.whl
+      - pypi: .
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_libgcc_mutex-0.1-conda_forge.tar.bz2
   sha256: fe51de6107f9edc7aa4f786a70f4a883943bc9d39b3bb7307c04c41410990726
@@ -104,6 +105,11 @@ packages:
   - virtualenv>=20.28.1 ; extra == 'testing'
   - typing-extensions>=4.12.2 ; python_full_version < '3.11' and extra == 'typing'
   requires_python: '>=3.9'
+- pypi: .
+  name: frontend-mess
+  version: 0.1.0
+  sha256: 3bc80c2617222789d9645e4577702a198d290bd0efc38425e13222650e312ef0
+  editable: true
 - pypi: https://files.pythonhosted.org/packages/56/53/eb690efa8513166adef3e0669afd31e95ffde69fb3c52ec2ac7223ed6018/fsspec-2025.3.0-py3-none-any.whl
   name: fsspec
   version: 2025.3.0
