@@ -16,6 +16,7 @@ jobs:
           cache: true
           cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
       - name: Torch-MLIR import
-        run: pixi run python frontend-mess/torch_mlir_import.py > test.mlir
-      - name: MLIR-opt pass
-        run: pixi run mlir-opt test.mlir
+        run: pixi run python examples/${{ matrix.example }}
+    strategy:
+      matrix:
+        kernel: [nnmodule, torchvision]
