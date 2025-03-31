@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  build-and-run-kernels:
+  import-simple:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
@@ -15,5 +15,7 @@ jobs:
         with:
           cache: true
           cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
-      - name: Build and run kernels
-        run: pixi run python frontend-mess/torch_mlir_import.py | mlir-opt
+      - name: Torch-MLIR import
+        run: pixi run python frontend-mess/torch_mlir_import.py > test.mlir
+      - name: MLIR-opt pass
+        run: pixi run mlir-opt test.mlir
