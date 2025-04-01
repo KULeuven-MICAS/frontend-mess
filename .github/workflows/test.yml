@@ -19,4 +19,4 @@ jobs:
         run: pixi run python examples/${{ matrix.example }}.py
     strategy:
       matrix:
-        example: [nnmodule, torchvision_resnet, transformers_whispersmall]
+        example: [nnmodule, torchvision_resnet, transformers_whispersmall, transformers_berttiny]
