@@ -15,7 +15,7 @@ def nullify_dense_resources(input_module: str) -> str:
     sub_module = re.sub(regex_float, subst_float, input_module, 0, re.MULTILINE)
     sub_module = re.sub(regex_int, subst_int, sub_module, 0, re.MULTILINE)
     module_stream = StringIO(sub_module)
-    module_stream = run_mlir_opt(module_stream, [])
+    module_stream = run_mlir_opt(module_stream, ["--test-linalg-transform-patterns=test-generalize-pad-tensor","--linalg-generalize-named-ops", "-test-linalg-elementwise-fusion-patterns=fuse-multiuse-producer","--mlir-print-op-generic"])
     return module_stream.getvalue()
 
 

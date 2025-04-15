@@ -5,10 +5,20 @@ authors = [
     {name = "Josse Van Delm", email = "josse.vandelm@kuleuven.be"},
 ]
 version = "0.1.0"
+dependencies = [
+    "xdsl @ git+https://github.com/xdslproject/xdsl.git@31807e6b92c9574109721db76a121c369ccff9e5 ",
+    "numpy",
+]
+
+[project.scripts]
+mess-analysis = "frontend_mess.tools.mess_analysis:main"
 
 [build-system]
 requires = ["hatchling >= 1.26"]
 build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [tool.pixi.project]
 channels = ["conda-forge", "kuleuven-micas"]

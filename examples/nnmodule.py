@@ -21,5 +21,8 @@ if __name__ == "__main__":
         output_type="linalg-on-tensors",
         func_name="linear_layer",
     ))
+    #print(module)
     module = nullify_dense_resources(module)
     print(module)
+
+
