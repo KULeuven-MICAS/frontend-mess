@@ -24,5 +24,3 @@ if __name__ == "__main__":
     #print(module)
     module = nullify_dense_resources(module)
     print(module)
-
-

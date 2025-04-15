@@ -8,7 +8,7 @@ from frontend_mess.analyses.analysis import ModuleAnalysis
 
 
 class MessAnalysisMain(CommandLineTool):
- 
+
     def __init__(
         self,
         description: str = "Minimal xdsl-based analysis tool",
