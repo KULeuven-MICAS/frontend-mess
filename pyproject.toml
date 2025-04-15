@@ -7,7 +7,7 @@ authors = [
 version = "0.1.0"
 dependencies = [
     "xdsl @ git+https://github.com/xdslproject/xdsl.git@31807e6b92c9574109721db76a121c369ccff9e5 ",
-    "numpy",
+    "numpy", "lit", "filecheck>=1.0.1,<2",
 ]
 
 [project.scripts]
@@ -30,6 +30,7 @@ platforms = ["linux-64"]
 python = "==3.11.11"
 mlir = { version = "==19.1.1.c.d401987fe349a87c53fe25829215b80b70c0c1a", channel = "kuleuven-micas" }
 transformers = ">=4.50.0,<5"
+lit = "*"
 
 [tool.pixi.pypi-dependencies]
 torch = {version = "==2.5.0", index = "https://download.pytorch.org/whl/cpu"}
