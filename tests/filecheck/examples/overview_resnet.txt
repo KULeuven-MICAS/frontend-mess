@@ -1,0 +1,12 @@
+// RUN: python examples/torchvision_resnet.py | mlir-opt --linalg-generalize-named-ops --mlir-print-op-generic --canonicalize |  mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
+// CHECK: ===================
+// CHECK:  Analysis Overview
+// CHECK: ===================
+// CHECK: Linalg generics      : 200
+// CHECK: Unique maps          : 15
+// CHECK: Unique iterators     : 7
+// CHECK: Unique operand types : 38
+// CHECK: Unique element types : 1
+// CHECK: Unique bodies        : 12
+// CHECK: Unique body ops      : 12
+

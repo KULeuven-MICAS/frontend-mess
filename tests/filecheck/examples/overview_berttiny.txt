@@ -1,0 +1,11 @@
+// RUN: python examples/transformers_berttiny.py | mlir-opt --linalg-generalize-named-ops --mlir-print-op-generic --canonicalize |  mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
+// CHECK: ===================
+// CHECK:  Analysis Overview
+// CHECK: ===================
+// CHECK: Linalg generics      : 202
+// CHECK: Unique maps          : 26
+// CHECK: Unique iterators     : 6
+// CHECK: Unique operand types : 39
+// CHECK: Unique element types : 4
+// CHECK: Unique bodies        : 30
+// CHECK: Unique body ops      : 33

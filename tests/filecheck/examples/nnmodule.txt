@@ -1,0 +1,62 @@
+// RUN: python examples/nnmodule.py | mlir-opt --linalg-generalize-named-ops --mlir-print-op-generic --canonicalize |  mess-analysis linalg_analysis --allow-unregistered-dialect | sed 's/\x1B\[[0-9;]*[mK]//g' | filecheck %s
+// CHECK:===================
+// CHECK:maps
+// CHECK:===================
+// CHECK: 1  → [affine_map<(d0, d1) -> ()>, affine_map<(d0, d1) -> (d0, d1)>]
+// CHECK: 1  → [affine_map<(d0, d1, d2) -> (d0, d2)>, affine_map<(d0, d1, d2) -> (d2, d1)>, affine_map<(d0, d1, d2) -> (d0, d1)>]
+// CHECK: 1  → [affine_map<(d0) -> (d0)>, affine_map<(d0) -> (d0)>, affine_map<(d0) -> (d0)>]
+// CHECK:===================
+// CHECK:iterators
+// CHECK:===================
+// CHECK: 1  → [#linalg.iterator_type<parallel>, #linalg.iterator_type<parallel>]
+// CHECK: 1  → [#linalg.iterator_type<parallel>, #linalg.iterator_type<parallel>, #linalg.iterator_type<reduction>]
+// CHECK: 1  → [#linalg.iterator_type<parallel>]
+// CHECK:===================
+// CHECK:operand types
+// CHECK:===================
+// CHECK: 3  → tensor<3xf32>
+// CHECK: 2  → tensor<1x3xf32>
+// CHECK: 1  → f32
+// CHECK: 1  → tensor<1x4xf32>
+// CHECK: 1  → tensor<4x3xf32>
+// CHECK:===================
+// CHECK:element types
+// CHECK:===================
+// CHECK: 8  → f32
+// CHECK:===================
+// CHECK:bodies
+// CHECK:===================
+// CHECK: 1  →
+// CHECK:^0(%0 : f32, %1 : f32):
+// CHECK:  linalg.yield %0 : f32
+//
+// CHECK: 1  →
+// CHECK:^0(%0 : f32, %1 : f32, %2 : f32):
+// CHECK:  %3 = arith.mulf %0, %1 : f32
+// CHECK:  %4 = arith.addf %2, %3 : f32
+// CHECK:  linalg.yield %4 : f32
+//
+// CHECK: 1  →
+// CHECK:^0(%0 : f32, %1 : f32, %2 : f32):
+// CHECK:  %3 = arith.addf %0, %1 : f32
+// CHECK:  linalg.yield %3 : f32
+//
+// CHECK:===================
+// CHECK:body ops
+// CHECK:===================
+// CHECK: 3  → linalg.yield %0 : f32
+//
+// CHECK: 2  → %0 = arith.addf %1, %2 : f32
+//
+// CHECK: 1  → %0 = arith.mulf %1, %2 : f32
+//
+// CHECK:===================
+// CHECK: Analysis Overview
+// CHECK:===================
+// CHECK:Linalg generics      : 3
+// CHECK:Unique maps          : 3
+// CHECK:Unique iterators     : 3
+// CHECK:Unique operand types : 5
+// CHECK:Unique element types : 1
+// CHECK:Unique bodies        : 3
+// CHECK:Unique body ops      : 3
