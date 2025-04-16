@@ -1,0 +1,11 @@
+// RUN: python examples/transformers_tinystories.py | mlir-opt --linalg-generalize-named-ops --mlir-print-op-generic --canonicalize |  mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
+// CHECK: ===================
+// CHECK:  Analysis Overview
+// CHECK: ===================
+// CHECK: Linalg generics      : 608
+// CHECK: Unique maps          : 29
+// CHECK: Unique iterators     : 7
+// CHECK: Unique operand types : 40
+// CHECK: Unique element types : 4
+// CHECK: Unique bodies        : 34
+// CHECK: Unique body ops      : 35
