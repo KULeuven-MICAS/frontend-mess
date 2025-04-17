@@ -1,12 +1,8 @@
 from collections import Counter
 from frontend_mess.analyses.analysis import ModuleAnalysis
+from frontend_mess.utils.printing import print_fallback, remove_name_hints
 from xdsl.context import Context
 from xdsl.dialects import builtin, linalg
-from pprint import pprint
-from xdsl.printer import Printer
-from xdsl.ir import Operation
-from io import StringIO
-import pandas as pd
 
 class LinalgAnalysis(ModuleAnalysis):
     def apply(self, ctx: Context, op: builtin.ModuleOp) -> None:
@@ -49,10 +45,8 @@ class LinalgAnalysis(ModuleAnalysis):
                 # Compare linalg generic body's (full body)
 
                 # Remove SSAValue name hints to allow similarity check
-                for block_arg in operation.body.block.args:
-                    block_arg.name_hint = None
+                remove_name_hints(operation.body.block)
                 body_keeper.append(print_fallback(operation.body.block))
-
 
                 # Compare linalg generic body's (individual ops)
 
@@ -78,19 +72,4 @@ class LinalgAnalysis(ModuleAnalysis):
         print(f"Linalg generics      : {amount_of_generics}")
         for name, number in zip(names, unique_lens, strict=True):
             print(f"Unique {name:13} : {number}")
-
-def print_fallback(print_input) -> str:
-    try:
-        # Create entirely new stream and Printer on purpose
-        string_stream = StringIO()
-        p = Printer(stream=string_stream, print_generic_format=False)
-        p.print(print_input)
-        return string_stream.getvalue()
-    #something went wrong during printing, fall back to generic printer
-    except: 
-        # The old stream has to be discarded, create a new one
-        g_string_stream = StringIO()
-        gp = Printer(stream=g_string_stream, print_generic_format=True)
-        gp.print(print_input)
-        return g_string_stream.getvalue()
 
