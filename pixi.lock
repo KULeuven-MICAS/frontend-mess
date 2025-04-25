@@ -220,7 +220,7 @@ environments:
       - pypi: https://download.pytorch.org/whl/cpu/torch-2.5.0%2Bcpu-cp311-cp311-linux_x86_64.whl#sha256=217b7de83d1cc71f1de2eae4288cb25a8210a109424a0c1fdde640e3778747d7
       - pypi: https://github.com/llvm/torch-mlir-release/releases/download/dev-wheels/torch_mlir-20250127.357-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://download.pytorch.org/whl/cpu/torchvision-0.20.0%2Bcpu-cp311-cp311-linux_x86_64.whl#sha256=3023b88f27f2e80fefa2ff54d9cdb968479a2903c3bc5d0d872e7092d3f8f555
-      - pypi: git+https://github.com/xdslproject/xdsl.git?rev=31807e6b92c9574109721db76a121c369ccff9e5#31807e6b92c9574109721db76a121c369ccff9e5
+      - pypi: git+https://github.com/xdslproject/xdsl.git?rev=b45190c89b6aad7872e1dab06e2a583d807cbc55#b45190c89b6aad7872e1dab06e2a583d807cbc55
       - pypi: .
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_libgcc_mutex-0.1-conda_forge.tar.bz2
@@ -918,9 +918,9 @@ packages:
 - pypi: .
   name: frontend-mess
   version: 0.1.0
-  sha256: c49195bf32ad782c1a58e23f617f30a8e1bc1ebd09dffc371d67b50a23708483
+  sha256: aa996c3713a0bbf2f9ed2eb00743eb0343ebdaa68c40a1c1861dae0b84ea00a0
   requires_dist:
-  - xdsl @ git+https://github.com/xdslproject/xdsl.git@31807e6b92c9574109721db76a121c369ccff9e5
+  - xdsl @ git+https://github.com/xdslproject/xdsl.git@b45190c89b6aad7872e1dab06e2a583d807cbc55
   - numpy
   - lit
   - filecheck>=1.0.1,<2
@@ -2872,9 +2872,9 @@ packages:
   purls: []
   size: 321561
   timestamp: 1724530461598
-- pypi: git+https://github.com/xdslproject/xdsl.git?rev=31807e6b92c9574109721db76a121c369ccff9e5#31807e6b92c9574109721db76a121c369ccff9e5
+- pypi: git+https://github.com/xdslproject/xdsl.git?rev=b45190c89b6aad7872e1dab06e2a583d807cbc55#b45190c89b6aad7872e1dab06e2a583d807cbc55
   name: xdsl
-  version: '0.33'
+  version: 0.35.1.dev22+gb45190c8
   requires_dist:
   - immutabledict<4.2.2
   - typing-extensions>=4.7,<5
@@ -2887,13 +2887,13 @@ packages:
   - nbval<0.12 ; extra == 'dev'
   - filecheck==1.0.1 ; extra == 'dev'
   - lit<19.0.0 ; extra == 'dev'
-  - marimo==0.12.6 ; extra == 'dev'
+  - marimo==0.13.1 ; extra == 'dev'
   - pre-commit>=4.0.0,<5.0.0 ; extra == 'dev'
-  - ruff==0.11.4 ; extra == 'dev'
+  - ruff==0.11.6 ; extra == 'dev'
   - nbconvert>=7.7.2,<8.0.0 ; extra == 'dev'
   - textual-dev==1.7.0 ; extra == 'dev'
   - pytest-asyncio==0.26.0 ; extra == 'dev'
-  - pyright==1.1.398 ; extra == 'dev'
+  - pyright==1.1.399 ; extra == 'dev'
   - sympy==1.13.3 ; extra == 'dev'
   - mkdocs-gen-files>=0.5.0 ; extra == 'docs'
   - mkdocs-material>=9.5.49 ; extra == 'docs'
@@ -2901,10 +2901,10 @@ packages:
   - mkdocstrings[python]>=0.27.0 ; extra == 'docs'
   - pymdown-extensions>=10.7 ; extra == 'docs'
   - lzstring2 ; extra == 'docs'
-  - textual==3.0.1 ; extra == 'gui'
+  - textual==3.1.1 ; extra == 'gui'
   - pyclip==0.7 ; extra == 'gui'
-  - jax==0.5.3 ; extra == 'jax'
-  - numpy==2.2.4 ; extra == 'jax'
+  - jax==0.6.0 ; extra == 'jax'
+  - numpy==2.2.5 ; extra == 'jax'
   - riscemu==2.2.7 ; extra == 'riscv'
   - asv>=0.6.4 ; extra == 'bench'
   - snakeviz>=2.2.2 ; extra == 'bench'
