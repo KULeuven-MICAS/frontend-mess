@@ -105,6 +105,10 @@ def visualize_bodies(operation: linalg.GenericOp, graph: Digraph):
                     color = "lightblue"
                 case "arith":
                     color = "lightgreen"
+                case "math":
+                    color = "sienna1"
+                case "cf":
+                    color = "peachpuff"
                 case _:
                     color = "lightcoral"
             if len(op.result_types) > 0:
