@@ -6,7 +6,7 @@ authors = [
 ]
 version = "0.1.0"
 dependencies = [
-    "xdsl @ git+https://github.com/xdslproject/xdsl.git@b45190c89b6aad7872e1dab06e2a583d807cbc55",
+    "xdsl>=0.54.4,<0.55.0",
     "numpy", "lit", "filecheck>=1.0.1,<2", "graphviz>=0.20.3,<0.21",
 ]
 
