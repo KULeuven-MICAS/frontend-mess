@@ -34,7 +34,7 @@ lit = "*"
 graphviz = ">=12.2.1,<13"
 
 [tool.pixi.pypi-dependencies]
-torch = {version = "==2.5.0", index = "https://download.pytorch.org/whl/cpu"}
-torchvision = {version = "==0.20.0", index = "https://download.pytorch.org/whl/cpu"}
+torch = {version = "==2.6.0", index = "https://download.pytorch.org/whl/cpu"}
+torchvision = {version = "==0.21.0", index = "https://download.pytorch.org/whl/cpu"}
 torch-mlir = {index = "https://github.com/llvm/torch-mlir-release/releases/expanded_assets/dev-wheels"}
 frontend-mess = { path = ".", editable = true}

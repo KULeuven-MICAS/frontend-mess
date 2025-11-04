@@ -241,9 +241,9 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/33/55/af02708f230eb77084a299d7b08175cff006dea4f2721074b92cdb0296c0/ordered_set-4.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/41/1e/db9470f2d030b4995083044cd8738cdd1bf773106819f6d8ba12597d5352/pillow-12.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/b2/fe/81695a1aa331a842b582453b605175f419fe8540355886031328089d840a/sympy-1.13.1-py3-none-any.whl
-      - pypi: https://download.pytorch.org/whl/cpu/torch-2.5.0%2Bcpu-cp311-cp311-linux_x86_64.whl
+      - pypi: https://download.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp311-cp311-linux_x86_64.whl
       - pypi: https://github.com/llvm/torch-mlir-release/releases/download/dev-wheels/torch_mlir-20251003.589-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-      - pypi: https://download.pytorch.org/whl/cpu/torchvision-0.20.0%2Bcpu-cp311-cp311-linux_x86_64.whl
+      - pypi: https://download.pytorch.org/whl/cpu/torchvision-0.21.0%2Bcpu-cp311-cp311-linux_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/43/9c/60b2177865495d9be1f1f19f3220f7ed7bd8dda697bc0cb016759b3dca19/xdsl-0.54.4-py3-none-any.whl
       - pypi: ./
 packages:
@@ -1000,7 +1000,7 @@ packages:
 - pypi: ./
   name: frontend-mess
   version: 0.1.0
-  sha256: cf5998543ebe4dfd86bd4d4d2bf9a447b81b7722a2827489912cc40ff6bd8fb8
+  sha256: dda2f63b63893b5b7817dee06b13902cbfc831533a748360595071afb164f2e3
   requires_dist:
   - xdsl>=0.54.4,<0.55.0
   - numpy
@@ -3104,22 +3104,21 @@ packages:
   - pkg:pypi/tokenizers?source=hash-mapping
   size: 2524845
   timestamp: 1758298349218
-- pypi: https://download.pytorch.org/whl/cpu/torch-2.5.0%2Bcpu-cp311-cp311-linux_x86_64.whl
+- pypi: https://download.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp311-cp311-linux_x86_64.whl
   name: torch
-  version: 2.5.0+cpu
-  sha256: 217b7de83d1cc71f1de2eae4288cb25a8210a109424a0c1fdde640e3778747d7
+  version: 2.6.0+cpu
+  sha256: 5b6ae523bfb67088a17ca7734d131548a2e60346c622621e4248ed09dd0790cc
   requires_dist:
   - filelock
-  - typing-extensions>=4.8.0
+  - typing-extensions>=4.10.0
   - networkx
   - jinja2
   - fsspec
-  - sympy==1.12.1 ; python_full_version == '3.8.*'
   - setuptools ; python_full_version >= '3.12'
   - sympy==1.13.1 ; python_full_version >= '3.9'
   - opt-einsum>=3.3 ; extra == 'opt-einsum'
-  - optree>=0.12.0 ; extra == 'optree'
-  requires_python: '>=3.8.0'
+  - optree>=0.13.0 ; extra == 'optree'
+  requires_python: '>=3.9.0'
 - pypi: https://github.com/llvm/torch-mlir-release/releases/download/dev-wheels/torch_mlir-20251003.589-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
   name: torch-mlir
   version: '20251003.589'
@@ -3128,17 +3127,17 @@ packages:
   - packaging
   - onnx>=1.15.0 ; extra == 'onnx'
   requires_python: '>=3.8'
-- pypi: https://download.pytorch.org/whl/cpu/torchvision-0.20.0%2Bcpu-cp311-cp311-linux_x86_64.whl
+- pypi: https://download.pytorch.org/whl/cpu/torchvision-0.21.0%2Bcpu-cp311-cp311-linux_x86_64.whl
   name: torchvision
-  version: 0.20.0+cpu
-  sha256: 3023b88f27f2e80fefa2ff54d9cdb968479a2903c3bc5d0d872e7092d3f8f555
+  version: 0.21.0+cpu
+  sha256: d67081026aad9642c46d3b14035f8ae69117468c09a07d628f3eafc7ae74841f
   requires_dist:
   - numpy
-  - torch==2.5.0
+  - torch==2.6.0
   - pillow>=5.3.0,!=8.3.*
   - gdown>=4.7.3 ; extra == 'gdown'
   - scipy ; extra == 'scipy'
-  requires_python: '>=3.8'
+  requires_python: '>=3.9'
 - conda: https://conda.anaconda.org/conda-forge/noarch/tqdm-4.67.1-pyhd8ed1ab_1.conda
   sha256: 11e2c85468ae9902d24a27137b6b39b4a78099806e551d390e394a8c34b48e40
   md5: 9efbfdc37242619130ea42b1cc4ed861
