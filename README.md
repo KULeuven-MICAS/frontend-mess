@@ -76,6 +76,23 @@ Most (all?) of `torchdynamo` is completely available in python.
 `torch-mlir`'s tests run on a reference backend (i.e. converts to a set of just upstream dialects to convert to LLVM and run through `mlir-cpu-runner` pretty much)
 `iree-turbine` uses a version of this, that uses additional IREE low-level dialects to facilitate loading, exporting and handling large weights inside these models
 
+### LiteRT (former TensorFlow Lite)
+
+Tflite was a popular tool for getting fully quantized integer workloads into your conversion chain.
+While many other tools exist(ed), tflite was the only one that:
+
+* Was not confined to specific workloads (many newer quantization approaches e.g. only work on certain sets of Transformers)
+* Actually had a quantization specification on their website.
+
+A path existed from tflite flatbuffers (i.e. .tflite files) into TOSA dialect (a dialect that is versioned by some people (mainly ARM)).
+This path is now in a bit of an uneasy state:
+
+* MLIR has been updating the upstream TOSA dialect to move to v1.0 including many breaking changes (e.g. their "tosa.fully_connected" operation is now gone).
+* Tensorflow has not updated the support for tflite formats, so it keeps emitting pre-TOSA-v1.0 MLIR bytecode.
+Because tensorflow is in the process of splitting of from the newly created litert project, it is not clear if LiteRT will include the TOSA conversion.
+* ARM has published a [Tool](https://gitlab.arm.com/tosa/tosa-converter-for-tflite) but this tool only seems to be working with bleeding edge versions of MLIR.
+Also, to use the tool, one has to build from scratch, but to do so, the tool actually builds TensorFlow in the back. Be prepared for long build times.
+
 ### HuggingFace Transformers
 
 [huggingface transformers](https://github.com/huggingface/transformers) is a library of python functions that call pytorch, gguf, tensorflow, jax, ... models for you with a few simple lines of code. 
