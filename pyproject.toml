@@ -6,7 +6,7 @@ authors = [
 ]
 version = "0.1.0"
 dependencies = [
-    "xdsl @ git+https://github.com/xdslproject/xdsl.git@b45190c89b6aad7872e1dab06e2a583d807cbc55",
+    "xdsl @ git+https://github.com/xdslproject/xdsl.git@af4e063ee948b8f62fd8476d2f25d0b018bc274c",
     "numpy", "lit", "filecheck>=1.0.1,<2", "graphviz>=0.20.3,<0.21",
 ]
 
@@ -20,7 +20,7 @@ build-backend = "hatchling.build"
 [tool.hatch.metadata]
 allow-direct-references = true
 
-[tool.pixi.project]
+[tool.pixi.workspace]
 channels = ["conda-forge", "kuleuven-micas"]
 platforms = ["linux-64"]
 
@@ -34,7 +34,7 @@ lit = "*"
 graphviz = ">=12.2.1,<13"
 
 [tool.pixi.pypi-dependencies]
-torch = {version = "==2.5.0", index = "https://download.pytorch.org/whl/cpu"}
-torchvision = {version = "==0.20.0", index = "https://download.pytorch.org/whl/cpu"}
+torch = {version = "==2.6.0", index = "https://download.pytorch.org/whl/cpu"}
+torchvision = {version = "==0.21.0", index = "https://download.pytorch.org/whl/cpu"}
 torch-mlir = {index = "https://github.com/llvm/torch-mlir-release/releases/expanded_assets/dev-wheels"}
 frontend-mess = { path = ".", editable = true}

@@ -2,7 +2,13 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
 from frontend_mess.postprocess.torch import nullify_dense_resources
 from torch_mlir import fx
 
-model = AutoModelForCausalLM.from_pretrained('roneneldan/TinyStories-1M')
+# `use_cache=False` keeps a DynamicCache from leaking into the export output.
+# `attn_implementation="eager"` avoids the SDPA path (which lowers to tm_tensor).
+model = AutoModelForCausalLM.from_pretrained(
+    'roneneldan/TinyStories-1M',
+    use_cache=False,
+    attn_implementation='eager',
+)
 tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-neo-125M")
 prompt = "Once upon a time there was"
 input_ids = tokenizer.encode(prompt, return_tensors="pt")
