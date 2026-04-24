@@ -7,5 +7,5 @@
 // CHECK: Unique iterators     : 5
 // CHECK: Unique operand types : 32
 // CHECK: Unique element types : 2
-// CHECK: Unique bodies        : 20
-// CHECK: Unique body ops      : 26
+// CHECK: Unique bodies        : 18
+// CHECK: Unique body ops      : 22

@@ -8,4 +8,4 @@
 // CHECK: Unique operand types : 35
 // CHECK: Unique element types : 3
 // CHECK: Unique bodies        : 20
-// CHECK: Unique body ops      : 30
+// CHECK: Unique body ops      : 25
