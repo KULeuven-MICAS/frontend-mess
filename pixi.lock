@@ -244,7 +244,7 @@ environments:
       - pypi: https://download-r2.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp311-cp311-linux_x86_64.whl
       - pypi: https://github.com/llvm/torch-mlir-release/releases/download/dev-wheels/torch_mlir-20260423.791-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://download-r2.pytorch.org/whl/cpu/torchvision-0.21.0%2Bcpu-cp311-cp311-linux_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/43/9c/60b2177865495d9be1f1f19f3220f7ed7bd8dda697bc0cb016759b3dca19/xdsl-0.54.4-py3-none-any.whl
+      - pypi: git+https://github.com/xdslproject/xdsl.git?rev=af4e063ee948b8f62fd8476d2f25d0b018bc274c#af4e063ee948b8f62fd8476d2f25d0b018bc274c
       - pypi: ./
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_libgcc_mutex-0.1-conda_forge.tar.bz2
@@ -1000,9 +1000,9 @@ packages:
 - pypi: ./
   name: frontend-mess
   version: 0.1.0
-  sha256: 99f9f44db23783967e3a9872bfdc2754bf9da8e44c7a0832f8526187f66f368e
+  sha256: e95ba340535c14fcb8fb5569f1ecc1b47ca151c1d7d78f21ca371d6f87f70f7f
   requires_dist:
-  - xdsl>=0.54.4,<0.55.0
+  - xdsl @ git+https://github.com/xdslproject/xdsl.git@af4e063ee948b8f62fd8476d2f25d0b018bc274c
   - numpy
   - lit
   - filecheck>=1.0.1,<2
@@ -3229,10 +3229,9 @@ packages:
   purls: []
   size: 329779
   timestamp: 1761174273487
-- pypi: https://files.pythonhosted.org/packages/43/9c/60b2177865495d9be1f1f19f3220f7ed7bd8dda697bc0cb016759b3dca19/xdsl-0.54.4-py3-none-any.whl
+- pypi: git+https://github.com/xdslproject/xdsl.git?rev=af4e063ee948b8f62fd8476d2f25d0b018bc274c#af4e063ee948b8f62fd8476d2f25d0b018bc274c
   name: xdsl
-  version: 0.54.4
-  sha256: f823e764cbcbb1d0b49968cb64dd50f0596a4d9e8c0bac21b1bedc40dd05dd95
+  version: 0.57.2.dev14+gaf4e063ee
   requires_dist:
   - immutabledict<4.2.3
   - typing-extensions>=4.7,<5
@@ -3246,8 +3245,8 @@ packages:
   - filecheck==1.0.3 ; extra == 'dev'
   - lit<19.0.0 ; extra == 'dev'
   - marimo>=0.17,<0.18 ; extra == 'dev'
-  - pre-commit>=4.0.0,<5.0.0 ; extra == 'dev'
-  - ruff==0.14.3 ; extra == 'dev'
+  - prek~=0.3.1 ; extra == 'dev'
+  - ruff==0.14.7 ; extra == 'dev'
   - nbconvert>=7.7.2,<8.0.0 ; extra == 'dev'
   - textual-dev==1.8.0 ; extra == 'dev'
   - pytest-asyncio==1.2.0 ; extra == 'dev'
@@ -3255,6 +3254,7 @@ packages:
   - sympy==1.14.0 ; extra == 'dev'
   - textual>=6,<7 ; extra == 'gui'
   - pyclip==0.7 ; extra == 'gui'
+  - llvmlite~=0.46.0 ; extra == 'llvm'
   requires_python: '>=3.10'
 - conda: https://conda.anaconda.org/conda-forge/linux-64/xkeyboard-config-2.46-hb03c661_0.conda
   sha256: aa03b49f402959751ccc6e21932d69db96a65a67343765672f7862332aa32834
