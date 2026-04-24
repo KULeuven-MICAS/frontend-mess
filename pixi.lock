@@ -1000,7 +1000,7 @@ packages:
 - pypi: ./
   name: frontend-mess
   version: 0.1.0
-  sha256: dda2f63b63893b5b7817dee06b13902cbfc831533a748360595071afb164f2e3
+  sha256: 99f9f44db23783967e3a9872bfdc2754bf9da8e44c7a0832f8526187f66f368e
   requires_dist:
   - xdsl>=0.54.4,<0.55.0
   - numpy

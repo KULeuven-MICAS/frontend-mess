@@ -20,7 +20,7 @@ build-backend = "hatchling.build"
 [tool.hatch.metadata]
 allow-direct-references = true
 
-[tool.pixi.project]
+[tool.pixi.workspace]
 channels = ["conda-forge", "kuleuven-micas"]
 platforms = ["linux-64"]
 
