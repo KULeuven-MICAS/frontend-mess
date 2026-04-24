@@ -1,7 +1,12 @@
+# Patch transformers masking_utils before importing any transformers model —
+# the default vmap-based causal mask and packed-seq detection break torch.export
+# on torch 2.6. See frontend_mess/preprocess/transformers.py for details.
+from frontend_mess.preprocess.transformers import apply_export_patches
+apply_export_patches()
+
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from torch_mlir import fx
 from frontend_mess.postprocess.torch import nullify_dense_resources
-import torch
 
 modelname = "openai/whisper-small"
 tokenizer = AutoTokenizer.from_pretrained(modelname)
@@ -15,6 +20,7 @@ model = AutoModelForCausalLM.from_pretrained(
     output_hidden_states=False,
     attn_implementation="eager",
     torchscript=False,
+    use_cache=False,
 )
 
 # This is just a simple demo to get some data flowing through the model.

@@ -2,10 +2,10 @@
 // CHECK: ===================
 // CHECK:  Analysis Overview
 // CHECK: ===================
-// CHECK: Linalg generics      : 608
-// CHECK: Unique maps          : 29
-// CHECK: Unique iterators     : 7
-// CHECK: Unique operand types : 40
-// CHECK: Unique element types : 4
-// CHECK: Unique bodies        : 34
-// CHECK: Unique body ops      : 35
+// CHECK: Linalg generics      : 661
+// CHECK: Unique maps          : 25
+// CHECK: Unique iterators     : 6
+// CHECK: Unique operand types : 41
+// CHECK: Unique element types : 3
+// CHECK: Unique bodies        : 26
+// CHECK: Unique body ops      : 28

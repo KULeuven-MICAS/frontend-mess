@@ -1,13 +1,15 @@
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 from frontend_mess.postprocess.torch import nullify_dense_resources
-import torch
 from torch_mlir import fx
 
 if __name__ == "__main__":
     # Load tokenizer and model
     model = "prajjwal1/bert-tiny"
     tokenizer = AutoTokenizer.from_pretrained(model)
-    model = AutoModelForMaskedLM.from_pretrained(model)
+    # `attn_implementation="eager"` forces the manual matmul-softmax-matmul
+    # decomposition. The SDPA path lowers to `tm_tensor.attention`, which the
+    # bundled mlir-opt does not register.
+    model = AutoModelForMaskedLM.from_pretrained(model, attn_implementation="eager")
     model.eval()
 
     # Create proper input for BERT model
