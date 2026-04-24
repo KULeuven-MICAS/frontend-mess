@@ -14,4 +14,4 @@ if __name__ == "__main__":
         output_type="linalg-on-tensors",
         func_name=resnet18.__class__.__name__,
     )
-    print(nullify_dense_resources(str(module)))
+    print(str(module))
