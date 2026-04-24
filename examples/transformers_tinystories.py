@@ -20,7 +20,7 @@ module = fx.export_and_import(
     func_name=model.__class__.__name__,
     import_symbolic_shape_expressions = True
 )
-print(str(module))
+print(nullify_dense_resources(str(module)))
 exit(0)
 output = model.generate(input_ids, max_length = 1000, num_beams=1)
 # Decode the completion

@@ -39,4 +39,4 @@ module = fx.export_and_import(
     func_name=model.__class__.__name__,
     import_symbolic_shape_expressions = True
 )
-print(str(module))
+print(nullify_dense_resources(str(module)))
