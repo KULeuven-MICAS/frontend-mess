@@ -15,8 +15,22 @@ jobs:
         with:
           cache: true
           cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
-      - name: Torch-MLIR import example
-        run: pixi run python examples/${{ matrix.example }}.py
+          environments: ${{ matrix.env }}
+      - name: Import example
+        run: pixi run -e ${{ matrix.env }} python examples/${{ matrix.example }}.py
     strategy:
       matrix:
-        example: [nnmodule, torchvision_resnet, transformers_whispersmall, transformers_berttiny, transformers_tinystories]
+        include:
+          - { example: nnmodule, env: default }
+          - { example: torchvision_resnet, env: default }
+          - { example: transformers_whispersmall, env: default }
+          - { example: transformers_berttiny, env: default }
+          - { example: transformers_tinystories, env: default }
+          - { example: mlperftiny_ad01_float, env: tflite }
+          - { example: mlperftiny_ad01_int8, env: tflite }
+          - { example: mlperftiny_kws_float, env: tflite }
+          - { example: mlperftiny_kws_int8, env: tflite }
+          - { example: mlperftiny_resnet_float, env: tflite }
+          - { example: mlperftiny_resnet_int8, env: tflite }
+          - { example: mlperftiny_vww_float, env: tflite }
+          - { example: mlperftiny_vww_int8, env: tflite }

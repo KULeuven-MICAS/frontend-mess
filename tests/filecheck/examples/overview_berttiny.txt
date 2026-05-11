@@ -1,4 +1,4 @@
-// RUN: python examples/transformers_berttiny.py | mlir-opt --linalg-generalize-named-ops --mlir-print-op-generic --canonicalize |  mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
+// RUN: python examples/transformers_berttiny.py | mlir-opt --mlir-print-op-generic --canonicalize |  mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
 // CHECK: ===================
 // CHECK:  Analysis Overview
 // CHECK: ===================

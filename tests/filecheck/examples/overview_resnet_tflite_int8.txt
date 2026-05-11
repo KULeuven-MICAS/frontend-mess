@@ -1,0 +1,11 @@
+// RUN: pixi run -e tflite python examples/mlperftiny_resnet_int8.py | mlir-opt --mlir-print-op-generic --canonicalize | mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
+// CHECK: ===================
+// CHECK:  Analysis Overview
+// CHECK: ===================
+// CHECK: Linalg generics      : 73
+// CHECK: Unique maps          : 16
+// CHECK: Unique iterators     : 6
+// CHECK: Unique operand types : 42
+// CHECK: Unique element types : 3
+// CHECK: Unique bodies        : 22
+// CHECK: Unique body ops      : 33
