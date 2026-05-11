@@ -20,6 +20,7 @@ jobs:
       with:
         cache: true
         cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+        environments: default tflite
     - name: Test with lit
       shell: bash
       run: |

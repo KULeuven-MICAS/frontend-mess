@@ -1,0 +1,11 @@
+// RUN: pixi run -e tflite python examples/mlperftiny_kws_float.py | mlir-opt --linalg-generalize-named-ops --mlir-print-op-generic --canonicalize | mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
+// CHECK: ===================
+// CHECK:  Analysis Overview
+// CHECK: ===================
+// CHECK: Linalg generics      : 58
+// CHECK: Unique maps          : 19
+// CHECK: Unique iterators     : 8
+// CHECK: Unique operand types : 20
+// CHECK: Unique element types : 2
+// CHECK: Unique bodies        : 13
+// CHECK: Unique body ops      : 9

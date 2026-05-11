@@ -38,3 +38,22 @@ torch = {version = "==2.6.0", index = "https://download.pytorch.org/whl/cpu"}
 torchvision = {version = "==0.21.0", index = "https://download.pytorch.org/whl/cpu"}
 torch-mlir = {index = "https://github.com/llvm/torch-mlir-release/releases/expanded_assets/dev-wheels"}
 frontend-mess = { path = ".", editable = true}
+
+# Isolated env for tflite import path. IREE's tflite import tool pulls in its
+# own MLIR plumbing, which fights torch/numpy pinning if mixed in the default env.
+[tool.pixi.feature.tflite.dependencies]
+python = "==3.11.11"
+mlir = { version = "==19.1.1.c.d401987fe349a87c53fe25829215b80b70c0c1a", channel = "kuleuven-micas" }
+
+[tool.pixi.feature.tflite.pypi-dependencies]
+iree-base-compiler = "*"
+iree-tools-tflite = "*"
+# iree-tools-tflite delegates TFLite->TOSA to tensorflow.mlir.experimental
+# since late 2024. TF 2.21 ships with the ExperimentalTFLiteToTosaBytecode
+# C++ binding stripped, so pin to 2.20 where it still exists.
+tensorflow = "==2.18.1"
+frontend-mess = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+tflite = { features = ["tflite"], no-default-feature = true }
