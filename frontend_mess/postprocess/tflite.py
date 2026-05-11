@@ -2,7 +2,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from frontend_mess.postprocess.torch import nullify_dense_resources
+from frontend_mess.postprocess.torch import nullify_dense_constants, nullify_dense_resources
 
 
 TOSA_TO_LINALG_PASSES = [
@@ -32,4 +32,4 @@ def tflite_to_linalg(tflite_path: Path) -> str:
         bytecode = Path(tmp) / "model.mlirbc"
         tflite_to_tosa_bytecode(tflite_path, bytecode)
         linalg_mlir = mlir_opt(bytecode, TOSA_TO_LINALG_PASSES)
-    return nullify_dense_resources(linalg_mlir)
+    return nullify_dense_resources(nullify_dense_constants(linalg_mlir))
