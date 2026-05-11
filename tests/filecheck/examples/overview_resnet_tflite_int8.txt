@@ -1,4 +1,4 @@
-// RUN: pixi run -e tflite python examples/mlperftiny_resnet_int8.py | mlir-opt --linalg-generalize-named-ops --mlir-print-op-generic --canonicalize | mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
+// RUN: pixi run -e tflite python examples/mlperftiny_resnet_int8.py | mlir-opt --mlir-print-op-generic --canonicalize | mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
 // CHECK: ===================
 // CHECK:  Analysis Overview
 // CHECK: ===================

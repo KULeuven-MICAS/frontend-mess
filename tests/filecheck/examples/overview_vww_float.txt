@@ -1,4 +1,4 @@
-// RUN: pixi run -e tflite python examples/mlperftiny_vww_float.py | mlir-opt --linalg-generalize-named-ops --mlir-print-op-generic --canonicalize | mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
+// RUN: pixi run -e tflite python examples/mlperftiny_vww_float.py | mlir-opt --mlir-print-op-generic --canonicalize | mess-analysis linalg_analysis --allow-unregistered-dialect | filecheck %s
 // CHECK: ===================
 // CHECK:  Analysis Overview
 // CHECK: ===================

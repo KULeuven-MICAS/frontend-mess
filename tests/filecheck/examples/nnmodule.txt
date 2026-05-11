@@ -1,4 +1,4 @@
-// RUN: python examples/nnmodule.py | mlir-opt --linalg-generalize-named-ops --mlir-print-op-generic --canonicalize | mess-analysis linalg_analysis --allow-unregistered-dialect | sed 's/\x1B\[[0-9;]*[mK]//g' | filecheck %s
+// RUN: python examples/nnmodule.py | mlir-opt --mlir-print-op-generic --canonicalize | mess-analysis linalg_analysis --allow-unregistered-dialect | sed 's/\x1B\[[0-9;]*[mK]//g' | filecheck %s
 // CHECK:===================
 // CHECK:maps
 // CHECK:===================
